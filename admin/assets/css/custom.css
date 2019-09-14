@@ -1,0 +1,49 @@
+/* Sidenav */
+
+.sidebar .nav-item.active .nav-link {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.sidebar .nav-item:hover {
+    background-color: #007bff;
+    font-weight: bold;
+    transition: background-color 0.5s;
+}
+
+.font-badge {
+    font-size: 20px;
+}
+
+
+/* Photo in modal */
+
+
+.photo_lib {
+    margin: 20px;
+}
+
+
+.modal-dialog {
+    width: 90% !important;
+}
+    
+.modal-body {
+    overflow: auto;
+    height: 500px !important;
+    min-height: 300px !important;
+}
+
+.modal_thumbnails {
+    width: 150px;
+    height: 100px !important;
+}
+
+#set_user_image {
+    margin: 10px;
+}
+
+/* #modal_sidebar {
+    position: absolute;
+} */
