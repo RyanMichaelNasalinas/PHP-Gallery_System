@@ -1,3 +1,12 @@
+Instruction
+
+Clone or Download the file and name the directory/folder as Gallery_System or anything you want.
+
+After you set up the folder, create a database named = gallery_db and import the gallery_db.sql file.
+
+
+
+
 # [Start Bootstrap - Blog Home](https://startbootstrap.com/template-overviews/blog-home/)
 
 [Blog Home](http://startbootstrap.com/template-overviews/blog-home/) is a basic blog homepage HTML starter template for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
