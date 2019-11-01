@@ -80,39 +80,29 @@ class User extends Main {
 
     //Verify login credential in login.php
     public static function verify_user($username,$password) {
-        // global $database;
-        // $username = $database->escape_string($username);
-        // $password = $database->escape_string($password);
-        // //SQL Query
-        // $sql = "SELECT * FROM ". self::$db_table ." WHERE ";
-        // $sql .= "username = '{$username}' ";
-        // $sql .= "AND password = '{$password}' ";
-        // $sql .= "LIMIT 1";
-
-
-        // $result = self::find_by_query($sql);
-        // return !empty($result) ? array_shift($result) : false;
-
-
+    
         global $database;
         $stmt = $database->conn->prepare("SELECT * FROM users WHERE username = ?");
         $stmt->bind_param("s",$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $num_rows = $result->num_rows;
+
+        if($num_rows > 0) {
         
-        if($stmt->execute()) {
-            $result = $stmt->get_result();
-            $num_rows = $result->num_rows;
             $row = $result->fetch_assoc();
-            $_SESSION['user_id'] = $row['id'];
+          
+            if(password_verify($password,$row['password'])) {
+                $_SESSION['user_id'] = $row['id'];
             $_SESSION['username'] = $row['username'];
             // $_SESSION['user_type'] = $row['user_type'];
-            $dbpass_password =  $row['password'];
-            if($num_rows == 1) {
-                 return password_verify($password,$dbpass_password);
+                return true;
             } else {
                 return false;
             }
+
         }
-        return $result;
+       
     } //End
 
     public function ajax_save_image($user_image, $user_id) {

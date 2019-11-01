@@ -10,8 +10,8 @@ if($session->is_signed_in()) {
 
   if(isset($_POST['submit'])) {
 
-      $username = trim($_POST['username']);
-      $password = trim($_POST['password']);
+      $username = $_POST['username'];
+      $password = $_POST['password'];
 
       //Method check database credentials
 
@@ -26,12 +26,9 @@ if($session->is_signed_in()) {
       } elseif(empty($_POST['username']) || empty($_POST['password'])) {
         $error_msg = "Username or Password cannot be empty";
       } else {
-
         $error_msg = "Username or Password are incorrect";
     }
-      
-      
-
+    
   } else {
       $error_msg = "";
       $username = "";

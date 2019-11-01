@@ -8,6 +8,7 @@
 
 <body id="page-top">
 
+<?= $_SESSION['username'];?>
   <!-- Navigation -->
   <?php require "includes/top_nav.php"; ?>
   <!-- /Navigation -->
