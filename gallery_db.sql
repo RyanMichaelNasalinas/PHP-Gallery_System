@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2019 at 02:08 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.3.3
+-- Generation Time: Nov 01, 2019 at 11:37 PM
+-- Server version: 10.1.40-MariaDB
+-- PHP Version: 7.1.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -74,19 +74,17 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `user_image` varchar(255) NOT NULL
+  `user_image` varchar(255) NOT NULL,
+  `user_level` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `user_image`) VALUES
-(37, 'admin', '$2y$10$yQ77trTzDviAlCL6er11P.DjgzhXaeFh3pxhb6w8GBy1k1bD/K/16', 'admin', 'admin', 'car.jpg'),
-(53, 'wa', 'wa', 'wa', 'wa', ''),
-(54, 'admin1', '$2y$10$WHK97GVE6FnjK38tEqhH4eT/f6AjA1bBvhi7F3Y0w/zEHJNbCl0XS', 'e', 'e', ''),
-(55, 'awe', '$2y$10$/T1fSvmNqm56s0X5GIMzGe16FYml1fm7rNOy1YJrpuiibmV/yGjdy', 'awe', 'awe', ''),
-(56, 'men', '$2y$10$QKTpng0TzsI85LebECDwZeE4lhrjbrXQmAkQ2L78EuxSOSppEUkAK', 'men', 'men', '');
+INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `user_image`, `user_level`) VALUES
+(37, 'admin', '$2y$10$RIb5QUjzlwXbvfDJtVw3DeOtH5E/6cph/UYsjEtdqTUgRaOf9GqoO', 'Admin', 'Admin', 'car.jpg', 'admin'),
+(55, 'awe', '$2y$10$X7YT.NEXB6YUzOWAPGl8QebmqhIZ1loHw.2bQyuM.lDtVfgGgINzK', 'Awe', 'Awe', '', 'user');
 
 --
 -- Indexes for dumped tables
@@ -119,19 +117,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
