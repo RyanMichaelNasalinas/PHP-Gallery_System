@@ -1,25 +1,20 @@
-<?php 
+<?php
 
-require_once "includes/header.php";
-
-///Check if use is signed in
-if($session->is_signed_in()) {
-    
-  redirect("index.php");
+  require_once "includes/header.php";
+  ///Check if use is signed in
+  if($session->is_signed_in()) {
+    redirect("index.php");
 }
 
   if(isset($_POST['submit'])) {
 
-      $username = $_POST['username'];
-      $password = $_POST['password'];
-
+      $username = trim($_POST['username']);
+      $password = trim($_POST['password']);
       //Method check database credentials
 
       $user_found = User::verify_user($username,$password);
 
-
       if($user_found) {
-
           // $session->login($user_found);
           redirect("index.php");
 
@@ -37,20 +32,19 @@ if($session->is_signed_in()) {
 ?>
 
 <body class="bg-dark">
- 
   <div class="container">
       <!-- Error Message -->
     
-<!--     
+      <?php if(isset($_POST['submit'])):?>
         <div class="alert alert-danger alert-dismissible fade show hide" id="alert">
-          <button type="button" class="close" data-dismiss="alert">&times;</button> -->
+          <button type="button" class="close" data-dismiss="alert">&times;</button> 
              <h4 class="text-danger text-center alert"> <?= $error_msg; ?></h4>
-          <!-- </div> -->
-        
+           </div>
+      <?php endif; ?>
         <!-- /Error Messagend --> 
     
+
     <div class="card card-login mx-auto mt-5 pb-4">
-     
       <div class="card-header">Login</div>
       <div class="card-body">
         

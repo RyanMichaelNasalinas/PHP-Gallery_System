@@ -34,7 +34,7 @@ $(document).ready(function(){
 
         photo_id = $(this).attr("data");
 
-s
+
        $.ajax({
            url: "includes/ajax_code.php",
            data: {photo_id:photo_id},

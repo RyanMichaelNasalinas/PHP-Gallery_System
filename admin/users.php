@@ -3,12 +3,10 @@
   require "includes/header.php";
   //Redirect back to login.php if user is not login in
   (!$session->is_signed_in()) ? redirect('login.php') : '';
-
   $users = User::find_all();
 
 ?>
 <!-- /Header  -->
-
 <body id="page-top">
 
   <!-- Navigation -->
@@ -49,7 +47,9 @@
                   <th>Username</th>
                   <th>First Name</th>
                   <th>Last Name</th>
-                  
+                  <th>User Level</th>
+                
+                 
                    <!-- <th>User Level</th> -->
   
                 </tr>
@@ -75,6 +75,7 @@
                 </td>
                   <td><?= $user->first_name; ?></td>
                   <td><?= $user->last_name; ?></td>
+                  <td><?= $user->user_level; ?></td>
 
                 <?php endforeach; ?> 
                 </tr>

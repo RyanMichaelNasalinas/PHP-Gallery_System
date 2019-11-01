@@ -1,19 +1,17 @@
 <!-- Header  -->
 <?php 
-  require "includes/header.php";
-
-  if(!$session->is_signed_in()){redirect("login.php");}
+    require "includes/header.php";
+    if(!$session->is_signed_in()){redirect("login.php");}
 ?>
 <!-- /Header  -->
 
+
 <body id="page-top">
 
-<?= $_SESSION['username'];?>
+
   <!-- Navigation -->
   <?php require "includes/top_nav.php"; ?>
   <!-- /Navigation -->
-
-
 
   <div id="wrapper">
     <!-- Sidebar -->

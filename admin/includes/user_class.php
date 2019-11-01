@@ -5,13 +5,14 @@ class User extends Main {
 
     //Database Properties
     protected static $db_table = "users";
-    protected static $db_table_fields = ['username','password','first_name','last_name','user_image'];
+    protected static $db_table_fields = ['username','password','first_name','last_name','user_image','user_level'];
     public $id;
     public $username;
     public $password;
     public $first_name;
     public $last_name;
     public $user_image;
+    public $user_level;
     public $upload_directory = "images";
     public $image_placeholder = "images/user_image.png";
     public $errors = [];
@@ -25,7 +26,6 @@ class User extends Main {
         UPLOAD_ERR_CANT_WRITE => "Failed to write a file to disk.",
         UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload."
   ]; //Upload error array
-
 
      //This is passing $_FILES['file_upload'] as an argument
      public function set_file($file) {
@@ -91,19 +91,34 @@ class User extends Main {
         if($num_rows > 0) {
         
             $row = $result->fetch_assoc();
-          
+    
             if(password_verify($password,$row['password'])) {
                 $_SESSION['user_id'] = $row['id'];
-            $_SESSION['username'] = $row['username'];
-            // $_SESSION['user_type'] = $row['user_type'];
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['user_level'] = $row['user_level'];
                 return true;
             } else {
                 return false;
             }
-
         }
-       
     } //End
+
+    //  public function check_userlevel($user_level) {
+    //     global $database;
+    //     $stmt = $database->conn->prepare("SELECT * FROM users WHERE user_level = ?");
+    //     $stmt->bind_param("s",$user_level);
+    //     $stmt->execute();
+
+    //      $result = $stmt->get_result();
+
+    //      if($result) {
+    //         return true;
+    //      } else {
+    //         return false;
+    //      }
+  
+    // }
+    
 
     public function ajax_save_image($user_image, $user_id) {
        global $database;
@@ -122,7 +137,8 @@ class User extends Main {
        echo $this->image_placeholder();
        
     }
-    
+
+   
     public function delete_photo() {
         
         if($this->delete()) {
