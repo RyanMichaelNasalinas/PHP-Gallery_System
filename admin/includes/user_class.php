@@ -105,7 +105,22 @@ class User extends Main {
     } //End
 
         public function check_userlevel($user_level) {
-        if($user_level === "admin") {
+            if($user_level === "admin") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    public function check_existing_username($username) {
+        global $database;
+        $stmt = $database->conn->prepare("SELECT * FROM users WHERE username = ?");
+        $stmt->bind_param("s",$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $num_rows = $result->num_rows;
+
+        if($num_rows > 0) {
             return true;
         } else {
             return false;

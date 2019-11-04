@@ -16,12 +16,15 @@ $errors = [
     'user_level_err' => ''
 ];
 
+
 if(isset($_POST['create'])) {
 
     if($user) {
 
             if(check_empty($_POST['username'])) {
                $errors['username_err'] = 'Username field should not be empty';
+            } elseif($user->check_existing_username($_POST['username'])) {
+                $errors['username_err'] = 'Username is already existing';
             }
 
              if(check_empty($_POST['first_name'])) {
@@ -34,6 +37,16 @@ if(isset($_POST['create'])) {
 
             if(check_empty($_POST['password'])) {
                 $errors['password_err'] = 'Password field should not be empty';
+            } elseif(strlen($_POST['password']) < 8) {
+                $errors['password_err'] = 'Password should be more than 8 characters';
+            } elseif(!preg_match('/[A-Z]/',$_POST['password'])) {
+                $errors['password_err'] = 'Password should contain atleast a uppercase letter';
+            } elseif(!preg_match('/[a-z]/',$_POST['password'])) {
+                $errors['password_err'] = 'Password should contain atleat a lowercase letter';
+            } elseif(!preg_match('/[0-9]/',$_POST['password'])) {
+                $errors['password_err'] = 'Password should contain atleast a number';
+            } elseif(!preg_match('/[A-Za-z0-9\s]/',$_POST['password'])) {
+                $errors['password_err'] = 'Password should container atleast a special character';
             }
 
             if(check_empty($_POST['confirm_password'])) {
@@ -48,26 +61,30 @@ if(isset($_POST['create'])) {
                 $errors['user_level_err'] = 'User Level field should be empty';
             }
 
-            //     $user->username = $_POST['username'];
-            //     $user->first_name = $_POST['first_name'];
-            //     $user->last_name = $_POST['last_name'];
-            //     $user->password = password_hash($_POST['password'],PASSWORD_DEFAULT);
-            //     // $user->user_level = $_POST['user_level'];
 
-            //     $user->set_file($_FILES['user_image']);
-            //     $session->message(
-            //         '<div class="alert-success alert-dismissible fade show text-center" role="alert" id="alert">
-            //             The user '. $user->username .'  has been added
-            //         </div>'
-            //     );
-            //     $user->upload_photo();
-            //     $user->save();
-            //     redirect("users.php");
+            if (empty($errors['username_err']) && empty($errors['first_name_err']) 
+             && empty($errors['last_name_err']) && empty($errors['password_err']) 
+             && empty($errors['confirm_password_err']) && empty($errors['user_level_err'])) {
 
-            
-    }
-} 
+                    $user->username = $_POST['username'];
+                    $user->first_name = ucfirst($_POST['first_name']);
+                    $user->last_name = ucfirst($_POST['last_name']);
+                    $user->password = password_hash($_POST['password'],PASSWORD_DEFAULT);
+                    $user->user_level = $_POST['user_level'];
 
+                $user->set_file($_FILES['user_image']);
+                $session->message(
+                    '<div class="alert-success alert-dismissible fade show text-center" role="alert" id="alert">
+                        The user '. $user->username .'  has been added
+                    </div>'
+                );
+
+                $user->upload_photo();
+                $user->save();
+                redirect("users.php");
+           } 
+        }
+    } 
 ?>
 <!-- /Header  -->
 
@@ -104,7 +121,8 @@ if(isset($_POST['create'])) {
         <div class="col-md-6 col-sm-12">
         <form action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <input type="file" name="user_image" id="">
+                <label for="user_image">Upload Image</label>
+                <input type="file" name="user_image" id="user_image" class="form-control">
             </div>
             <div class="form-group">
                 <label class="username">Username</label>

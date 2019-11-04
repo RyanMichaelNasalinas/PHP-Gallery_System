@@ -27,8 +27,6 @@ class Main {
         return $object_array;
     } //End
 
-
-    
     //Automatically instatiate all the class
     public static function instatiation($user_record) {
         $called_class = get_called_class(); //For late static binding
@@ -61,7 +59,6 @@ class Main {
         return $properties;    
     } //End
     
-
        //Escape all the properties in this class
     protected function escape_properties() {
         //Escape all the properties from the loop, or abstraction we created for create and update
@@ -141,11 +138,6 @@ class Main {
         return array_shift($row);
     }
 
-   
 } //End of Main class
-
-
-
-
 
 ?>

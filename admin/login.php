@@ -33,22 +33,23 @@
 
 <body class="bg-dark">
   <div class="container">
-      <!-- Error Message -->
     
-      <?php if(isset($_POST['submit'])):?>
-      <div class="container">
-          <div class="alert alert-danger alert-dismissible fade show hide" id="alert">
-            <button type="button" class="close" data-dismiss="alert">&times;</button> 
-              <h4 class="text-danger text-center alert"> <?= $error_msg; ?></h4>
-            </div>
-           </div>
-      <?php endif; ?>
-        <!-- /Error Messagend --> 
+    
+     
     
     <div class="card card-login mx-auto mt-5 pb-4">
       <div class="card-header">Login</div>
       <div class="card-body">
-    
+        <!-- Error Message -->
+        <?php if(isset($_POST['submit'])):?>
+          <div class="container">
+              <div class="alert alert-danger alert-dismissible fade show hide" id="alert">
+                <button type="button" class="close" data-dismiss="alert">&times;</button> 
+                  <p class="text-danger text-center alert"> <?= $error_msg; ?></p>
+                </div>
+              </div>
+          <?php endif; ?>
+      <!-- /Error Messag end --> 
         <form method="post">
           <div class="form-group">
             <div class="form-label-group">
@@ -65,7 +66,7 @@
           <input class="btn btn-primary btn-block text-white" type="submit" name="submit" value="Login">
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="#">Register an Account</a>
+          <a class="d-block small mt-3" href="registration.php">Register an Account</a>
         </div>
       </div>
     </div>
