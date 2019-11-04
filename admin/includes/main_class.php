@@ -27,6 +27,8 @@ class Main {
         return $object_array;
     } //End
 
+
+    
     //Automatically instatiate all the class
     public static function instatiation($user_record) {
         $called_class = get_called_class(); //For late static binding

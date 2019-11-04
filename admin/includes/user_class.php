@@ -103,21 +103,18 @@ class User extends Main {
         }
     } //End
 
-    //  public function check_userlevel($user_level) {
-    //     global $database;
-    //     $stmt = $database->conn->prepare("SELECT * FROM users WHERE user_level = ?");
-    //     $stmt->bind_param("s",$user_level);
-    //     $stmt->execute();
+        public function check_userlevel($user_level) {
+        if($user_level === "admin") {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-    //      $result = $stmt->get_result();
 
-    //      if($result) {
-    //         return true;
-    //      } else {
-    //         return false;
-    //      }
-  
-    // }
+    
+
+
     
 
     public function ajax_save_image($user_image, $user_id) {
