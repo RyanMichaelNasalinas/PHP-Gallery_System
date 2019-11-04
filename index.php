@@ -2,25 +2,20 @@
 
 require "includes/header.php"; 
 
+  $page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 
+  $items_per_page = 6;
 
-$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
+  $items_total_count = Photo::count_all();
 
-$items_per_page = 6;
+  $paginate = new Paginate($page, $items_per_page, $items_total_count);
 
-$items_total_count = Photo::count_all();
-
-
-$paginate = new Paginate($page, $items_per_page, $items_total_count);
-
-$sql = "SELECT * FROM photos ";
-$sql .= "LIMIT {$items_per_page} ";
-$sql .= "OFFSET {$paginate->offset()}";
-$photos = Photo::find_by_query($sql); 
+  $sql = "SELECT * FROM photos ";
+  $sql .= "LIMIT {$items_per_page} ";
+  $sql .= "OFFSET {$paginate->offset()}";
+  $photos = Photo::find_by_query($sql); 
 
 ?>
-
-
 
 <body>
 

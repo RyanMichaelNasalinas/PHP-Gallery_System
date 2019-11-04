@@ -112,12 +112,6 @@ class User extends Main {
         }
     }
 
-
-    
-
-
-    
-
     public function ajax_save_image($user_image, $user_id) {
        global $database;
 
