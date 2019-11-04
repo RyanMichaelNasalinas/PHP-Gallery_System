@@ -50,7 +50,8 @@ class User extends Main {
       
             if(!empty($this->errors)) {
                 return false;
-            } 
+            }
+             
             if(empty($this->user_image || empty($this->tmp_path))) {
                 $this->errors[] = "The file was not available";
                 return false;
