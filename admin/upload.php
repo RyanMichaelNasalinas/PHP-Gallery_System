@@ -10,6 +10,7 @@
       $photo->description = $_POST['description'];
       $photo->title = $_POST['title'];
       $photo->uploaded_by = $_SESSION['username'];
+      $photo->date_uploaded = date("Y-m-d H:i:s");
       $photo->set_file($_FILES['file_upload']);
 
       if($photo->save()) {

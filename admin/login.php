@@ -49,7 +49,7 @@
                 </div>
               </div>
           <?php endif; ?>
-      <!-- /Error Messag end --> 
+      <!-- /Error Message end --> 
         <form method="post">
           <div class="form-group">
             <div class="form-label-group">
@@ -67,6 +67,8 @@
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="registration.php">Register an Account</a>
+          <hr/>
+          <a class="d-block small mt-3" href="../index.php">View Gallery</a>
         </div>
       </div>
     </div>

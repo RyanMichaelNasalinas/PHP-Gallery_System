@@ -4,7 +4,7 @@ class Photo extends Main {
 
   //Database Properties
   protected static $db_table = "photos";
-  protected static $db_table_fields = ['id','title','caption','description','filename','alternate_text','type','size','uploaded_by'];
+  protected static $db_table_fields = ['id','title','caption','description','filename','alternate_text','type','size','uploaded_by','date_uploaded'];
   public $id;
   public $title;
   public $caption;
@@ -14,6 +14,7 @@ class Photo extends Main {
   public $type;
   public $size;
   public $uploaded_by;
+  public $date_uploaded;
 
   public $tmp_path; //Temporary path
   public $upload_directory = "images"; //Images directory

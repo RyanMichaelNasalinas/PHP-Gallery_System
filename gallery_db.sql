@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2019 at 09:41 PM
+-- Generation Time: Nov 05, 2019 at 11:25 PM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.1.29
 
@@ -35,6 +35,15 @@ CREATE TABLE `comments` (
   `body` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `photo_id`, `author`, `body`) VALUES
+(4, 44, 'awe', 'Wow great Photo'),
+(5, 44, 'admin', 'Thanks!'),
+(6, 44, 'admin', 'wewe');
+
 -- --------------------------------------------------------
 
 --
@@ -50,17 +59,23 @@ CREATE TABLE `photos` (
   `alternate_text` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `size` int(11) NOT NULL,
-  `uploaded_by` varchar(255) NOT NULL
+  `uploaded_by` varchar(255) NOT NULL,
+  `date_uploaded` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `photos`
 --
 
-INSERT INTO `photos` (`id`, `title`, `caption`, `description`, `filename`, `alternate_text`, `type`, `size`, `uploaded_by`) VALUES
-(29, 'Photo1', 'Photo1', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>', 'bg.jpg', 'Photo1', 'image/jpeg', 37740, 'awe'),
-(43, 'waaaaaaaaa', '', 'waaa', 'Picture1.png', '', 'image/png', 6796, 'awe'),
-(44, 'wewew', '', 'wewe', 'Desert.jpg', '', 'image/jpeg', 845941, 'admin');
+INSERT INTO `photos` (`id`, `title`, `caption`, `description`, `filename`, `alternate_text`, `type`, `size`, `uploaded_by`, `date_uploaded`) VALUES
+(29, 'Photo1', 'Photo1', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>', 'bg.jpg', 'Photo1', 'image/jpeg', 37740, 'awe', '2019-11-05 13:58:27'),
+(43, 'waaaaaaaaa', '', 'waaa', 'Picture1.png', '', 'image/png', 6796, 'awe', '2019-11-05 13:58:27'),
+(44, 'wewew', '', 'wewe', 'Desert.jpg', '', 'image/jpeg', 845941, 'admin', '2019-11-05 13:58:27'),
+(46, 'This is fucking Cool', '', 'Hydrangeas', 'Hydrangeas.jpg', '', 'image/jpeg', 595284, 'Manticore1996', '2019-11-05 13:58:27'),
+(47, 'What the fuck', '', 'This photo break my brief', 'Chrysanthemum.jpg', '', 'image/jpeg', 879394, 'awe', '2019-11-05 00:00:00'),
+(48, 'WEWEWEW', '', 'WEWE', 'Tulips.jpg', '', 'image/jpeg', 620888, 'awe', '0000-00-00 00:00:00'),
+(49, 'ASDASDASDAS', '', 'QWES', 'Koala.jpg', '', 'image/jpeg', 780831, 'awe', '2019-11-05 23:04:15'),
+(50, 'hehehe', '', 'heheh', 'stair_1_after.jpg', '', 'image/jpeg', 57574, 'awe', '2019-11-05 23:04:48');
 
 -- --------------------------------------------------------
 
@@ -84,7 +99,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `user_image`, `user_level`) VALUES
 (37, 'admin', '$2y$10$RIb5QUjzlwXbvfDJtVw3DeOtH5E/6cph/UYsjEtdqTUgRaOf9GqoO', 'Admin', 'Admin', 'car.jpg', 'admin'),
-(55, 'awe', '$2y$10$CmSHfsj2mTL5PmY491RfjuXqfqQm1PLlFJj1ahgEUkx9bcJBo/rZa', 'awe', 'awe', 'fun.jpg', 'user');
+(55, 'awe', '$2y$10$CmSHfsj2mTL5PmY491RfjuXqfqQm1PLlFJj1ahgEUkx9bcJBo/rZa', 'awe', 'awe', 'fun.jpg', 'user'),
+(66, 'Manticore1996', '$2y$10$bVVn5PsQ1fBQNzdFMikPdutB2A.QPbrqNgfG6aAmPl.Vwtzw/obIG', 'Ryan Michael', 'Nasalinas', 'Hydrangeas.jpg', 'user');
 
 --
 -- Indexes for dumped tables
@@ -117,19 +133,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

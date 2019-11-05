@@ -44,13 +44,13 @@
         <!-- Author -->
         <p class="lead">
           by
-          <a href="#">Start Bootstrap</a>
+          <b><?= $photo->uploaded_by; ?></b>
         </p>
 
         <hr>
 
         <!-- Date/Time -->
-        <p>Posted on January 1, 2019 at 12:00 PM</p>
+        <p>Posted on <?= $photo->date_uploaded; ?></p>
 
         <hr>
 
@@ -75,7 +75,7 @@
             <form method="post" action="">
               <div class="form-group">
                 <label>Author</label>
-                <input type="text" name="author" id="" class="form-control" value="">
+                <input type="text" name="author" id="" class="form-control" value="<?= isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>">
               </div>
               <div class="form-group">
                 <textarea name="body" class="form-control" class="form-control"></textarea>
