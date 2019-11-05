@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2019 at 11:37 PM
+-- Generation Time: Nov 05, 2019 at 09:41 PM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.1.29
 
@@ -49,18 +49,18 @@ CREATE TABLE `photos` (
   `filename` varchar(255) NOT NULL,
   `alternate_text` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
-  `size` int(11) NOT NULL
+  `size` int(11) NOT NULL,
+  `uploaded_by` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `photos`
 --
 
-INSERT INTO `photos` (`id`, `title`, `caption`, `description`, `filename`, `alternate_text`, `type`, `size`) VALUES
-(29, 'Photo1', 'Photo1', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>', 'bg.jpg', 'Photo1', 'image/jpeg', 37740),
-(30, 'Photo2', 'Photo2', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>', 'car.jpg', 'Photo2', 'image/jpeg', 36535),
-(40, 'waa', '', '', 'car5.jpg', '', 'image/jpeg', 37787),
-(41, 'waaa', '', '', 'fun.jpg', '', 'image/jpeg', 57540);
+INSERT INTO `photos` (`id`, `title`, `caption`, `description`, `filename`, `alternate_text`, `type`, `size`, `uploaded_by`) VALUES
+(29, 'Photo1', 'Photo1', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>', 'bg.jpg', 'Photo1', 'image/jpeg', 37740, 'awe'),
+(43, 'waaaaaaaaa', '', 'waaa', 'Picture1.png', '', 'image/png', 6796, 'awe'),
+(44, 'wewew', '', 'wewe', 'Desert.jpg', '', 'image/jpeg', 845941, 'admin');
 
 -- --------------------------------------------------------
 
@@ -84,7 +84,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `user_image`, `user_level`) VALUES
 (37, 'admin', '$2y$10$RIb5QUjzlwXbvfDJtVw3DeOtH5E/6cph/UYsjEtdqTUgRaOf9GqoO', 'Admin', 'Admin', 'car.jpg', 'admin'),
-(55, 'awe', '$2y$10$X7YT.NEXB6YUzOWAPGl8QebmqhIZ1loHw.2bQyuM.lDtVfgGgINzK', 'Awe', 'Awe', '', 'user');
+(55, 'awe', '$2y$10$CmSHfsj2mTL5PmY491RfjuXqfqQm1PLlFJj1ahgEUkx9bcJBo/rZa', 'awe', 'awe', 'fun.jpg', 'user');
 
 --
 -- Indexes for dumped tables
@@ -117,19 +117,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
