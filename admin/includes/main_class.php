@@ -5,7 +5,7 @@ class Main {
 
     //Find all data in the database using this query
     public static function find_all() {
-        $result = static::find_by_query("SELECT * FROM ". static::$db_table ." ");
+        $result = static::find_by_query("SELECT * FROM ". static::$db_table ." ORDER BY id DESC");
         return $result; //Use static keyword for late static binding
     } //End
 
@@ -14,6 +14,7 @@ class Main {
         $result = static::find_by_query("SELECT * FROM ". static::$db_table ." WHERE id = $id LIMIT 1");
         return !empty($result) ? array_shift($result) : false;
     } //End
+
 
       //Global method for finding each queries
     public static function find_by_query($sql) {

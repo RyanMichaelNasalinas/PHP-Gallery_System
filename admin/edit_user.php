@@ -87,6 +87,7 @@ if(isset($_POST['delete'])) {
                 <div class="form-group">
                     <input type="file" name="user_image">
                 </div>
+                
                 <div class="form-group">
                     <label class="username">Username</label>
                     <input type="text" name="username" class="form-control" value="<?= $user->username; ?>">

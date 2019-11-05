@@ -3,9 +3,16 @@
 
 <?php 
 
-if(!$session->is_signed_in()){redirect("login.php");}
-
 $user = new User;
+
+if(!$session->is_signed_in()) {
+    redirect("login.php");
+}
+
+
+if(!$user->check_userlevel($_SESSION['user_level'])) {
+    redirect('users.php');
+}
 
 $errors = [
     'username_err' => '',

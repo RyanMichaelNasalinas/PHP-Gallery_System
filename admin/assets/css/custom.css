@@ -24,11 +24,11 @@
 }
 
 
-.modal-dialog {
+.modal-dialog-gallery {
     width: 90% !important;
 }
     
-.modal-body {
+.modal-body-gallery {
     overflow: auto;
     height: 500px !important;
     min-height: 300px !important;

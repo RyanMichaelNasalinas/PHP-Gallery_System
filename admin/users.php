@@ -4,11 +4,18 @@
   //Redirect back to login.php if user is not login in
   (!$session->is_signed_in()) ? redirect('login.php') : '';
 
-  $user = new User;
-  $users = User::find_all();
+  $user_level = new User;
+  
+  if($user_level->check_userlevel($_SESSION['user_level'])) {
+    $users = User::find_all(); 
+  } else {
+    $users = User::find_by_query("SELECT * FROM users WHERE id = ".$_SESSION['user_id']."");
+  }
+  
 ?>
 <!-- /Header  -->
 <body id="page-top">
+
 
   <!-- Navigation -->
   <?php require "includes/top_nav.php"; ?>
@@ -25,13 +32,17 @@
         <h1>
           Users
         </h1>
-
-      <a href="add_user.php" class="btn btn-primary btn-md" title="Add New User">Add New User</a>
+      <?php if($user_level->check_userlevel($_SESSION['user_level'])): ?>
+          <a href="add_user.php" class="btn btn-primary btn-md" title="Add New User">Add New User</a>
+        <?php endif; ?>
          
           <!-- Breadcrumbs-->
           <ol class="breadcrumb mt-2">
-          <li class="breadcrumb-item active">Photos</li>
-         
+            <?php if($user_level->check_userlevel($_SESSION['user_level'])): ?>
+               <li class="breadcrumb-item active">Users</li>
+            <?php else: ?>
+              <li class="breadcrumb-item active">My Profile</li>
+          <?php endif; ?>
         </ol>
       
        
@@ -48,7 +59,7 @@
                   <th>Username</th>
                   <th>First Name</th>
                   <th>Last Name</th>
-                  <?php if($user->check_userlevel($_SESSION['user_level'])): ?>
+                  <?php if($user_level->check_userlevel($_SESSION['user_level'])): ?>
                     <th>User Level</th>
                   <?php endif; ?>
                

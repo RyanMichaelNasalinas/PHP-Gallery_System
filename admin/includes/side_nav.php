@@ -1,5 +1,6 @@
 <?php 
-   $activePage = basename($_SERVER['PHP_SELF'],".php"); 
+   $activePage = basename($_SERVER['PHP_SELF'],".php");
+   $user_level = new User; 
 ?>
 
 <ul class="sidebar navbar-nav">
@@ -9,25 +10,34 @@
           <span>Dashboard</span>
         </a>
       </li>
-      <li class="nav-item <?php echo (($activePage == 'users') ? 'active' : ''); ?>"">
+      <?php if($user_level->check_userlevel($_SESSION['user_level'])): ?>
+      <li class="nav-item <?php echo (($activePage == 'users') ? 'active' : ''); ?>">
         <a class="nav-link" href="users.php">
           <i class="fas fa-fw fa-users"></i>
           <span>Users</span>
         </a>
       </li>
-      <li class="nav-item <?php echo (($activePage == 'upload') ? 'active' : ''); ?>"">
+    <?php else: ?>
+      <li class="nav-item <?php echo (($activePage == 'users') ? 'active' : ''); ?>">
+            <a class="nav-link" href="users.php">
+              <i class="fas fa-fw fa-users"></i>
+              <span>My Profile</span>
+            </a>
+          </li>
+    <?php endif; ?>
+      <li class="nav-item <?php echo (($activePage == 'upload') ? 'active' : ''); ?>">
         <a class="nav-link" href="upload.php">
           <i class="fas fa-fw fa-upload"></i>
-          <span>Upload</span>
+          <span>Upload Photo</span>
         </a>
       </li>
-      <li class="nav-item <?php echo (($activePage == 'photos') ? 'active' : ''); ?>"">
+      <li class="nav-item <?php echo (($activePage == 'photos') ? 'active' : ''); ?>">
         <a class="nav-link" href="photos.php">
           <i class="fas fa-fw fa-image"></i>
           <span>Photos</span>
         </a>
       </li>
-      <li class="nav-item <?php echo (($activePage == 'comments') ? 'active' : ''); ?>"">
+      <li class="nav-item <?php echo (($activePage == 'comments') ? 'active' : ''); ?>">
         <a class="nav-link" href="comments.php">
           <i class="fas fa-fw fa-comments"></i>
           <span>Comments</span>

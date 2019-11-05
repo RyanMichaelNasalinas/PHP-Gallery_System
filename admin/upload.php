@@ -7,7 +7,9 @@
   $message= "";
   if(isset($_POST['submit'])) {
       $photo = new Photo;
+      $photo->description = $_POST['description'];
       $photo->title = $_POST['title'];
+      $photo->uploaded_by = $_SESSION['username'];
       $photo->set_file($_FILES['file_upload']);
 
       if($photo->save()) {
@@ -38,16 +40,21 @@
         </h1> 
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+          <li class="breadcrumb-item active">
+          Upload Photo
           </li>
-          <li class="breadcrumb-item active">Overview</li>
         </ol>
+        <div class="row justify-content-center text">
        <div class="col-md-6">  
          <?= $message; ?> 
         <form action="" method="post" enctype="multipart/form-data">  
             <div class="form-group">
-                <input type="text" name="title" id="" class="form-control">
+              <label for="description">Description</label>
+              <input type="text" name="description" id="desscription" class="form-control">      
+            </div>
+            <div class="form-group">
+              <label for="file_name">Title</label>
+                <input type="text" name="title" id="file_name" class="form-control">
             </div>
             <div class="form-group">
               <input type="file" name="file_upload" id="" class="btn btn-secondary">
@@ -55,6 +62,7 @@
           <input type="submit" name="submit" class="btn btn-primary">
         </form>
     
+        </div>
         </div>
       </div>
       <!-- /Content -->

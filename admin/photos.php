@@ -4,7 +4,14 @@
 
   (!$session->is_signed_in()) ? redirect('login.php') : '';
 
-  $photos = Photo::find_all();
+  $user_level = User::check_userlevel($_SESSION['user_level']);
+
+  if($user_level) {
+     $photos = Photo::find_all();
+  } else {
+      $photos = Photo::find_by_query("SELECT * FROM photos WHERE uploaded_by = '".$_SESSION['username']."'");
+  }
+
 
 ?>
 <!-- /Header  -->
@@ -62,7 +69,7 @@
                     </div>
                   </td>
                   <td><?= $photo->id; ?></td>
-                  <td><?= $photo->description; ?></td>
+                  <td><?= substr($photo->description,0,20); ?></td>
                   <td><?= $photo->title; ?></td>
                   <td><?= $photo->size; ?></td>
                   <td>
