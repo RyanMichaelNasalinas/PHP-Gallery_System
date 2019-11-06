@@ -4,7 +4,7 @@ require "includes/header.php";
 
   $page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 
-  $items_per_page = 6;
+  $items_per_page = 12;
 
   $items_total_count = Photo::count_all();
 
@@ -80,11 +80,7 @@ require "includes/header.php";
               <span class="sr-only">Next</span>
             </a>
           </li>
-     
-       
-   
         </ul>
-    
       </nav>
     </div>
   </div>

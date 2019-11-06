@@ -35,9 +35,16 @@
 
   <!-- Page Content -->
   <div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-6">
+          <a class="btn btn-dark text-white" href="index.php">Back</a>      
+        </div>
+    </div>
+  
     <div class="row">
       <!-- Post Content Column -->
       <div class="col-lg-12 col-md-12">
+      
         <!-- Title -->
         <h1 class="mt-4"><?= $photo->title; ?></h1>
 
