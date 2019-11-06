@@ -1,5 +1,8 @@
 <?php 
 //In this file uploaded all the validations and helper functions
+
+
+//Autoloader
 function autoloaderClass($class) {
 
     $class = strtolower($class);
@@ -11,12 +14,15 @@ function autoloaderClass($class) {
 }
 
 spl_autoload_register('autoloaderClass');
+//End Autoloader
 
+//Redirect
 function redirect($location) {
-
     header("Location: $location");
 }
+//End Redirect
 
+//Check Empty
 function check_empty($field) {
     if(empty($field)) {
         return true;
@@ -24,7 +30,9 @@ function check_empty($field) {
         return false;
     }
 }
+//End Empty
 
+//Check Password
 function check_password($password,$confirm_password) {
     if($password != $confirm_password) {
         return true; 
@@ -32,6 +40,8 @@ function check_password($password,$confirm_password) {
         return false;
     }
 }
+//End Check Password
+
 
 
 

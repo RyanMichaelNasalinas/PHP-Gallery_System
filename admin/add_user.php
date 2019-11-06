@@ -68,7 +68,6 @@ if(isset($_POST['create'])) {
                 $errors['user_level_err'] = 'User Level field should be empty';
             }
 
-
             if (empty($errors['username_err']) && empty($errors['first_name_err']) 
              && empty($errors['last_name_err']) && empty($errors['password_err']) 
              && empty($errors['confirm_password_err']) && empty($errors['user_level_err'])) {
@@ -91,7 +90,11 @@ if(isset($_POST['create'])) {
                 redirect("users.php");
            } 
         }
-    } 
+    }
+    
+    if(isset($_POST['cancel'])) {
+        redirect("add_user.php");
+    }
 ?>
 <!-- /Header  -->
 
@@ -198,6 +201,7 @@ if(isset($_POST['create'])) {
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" name="create" class="btn btn-primary">
+                <input type="submit" value="Cancel" name="cancel" class="btn btn-danger">
             </div>  
         </div>
     

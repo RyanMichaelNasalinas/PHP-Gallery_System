@@ -6,21 +6,29 @@
 
 if(!$session->is_signed_in()){redirect("login.php");}
 
-
 if(empty($_GET['id'])){
     redirect("users.php");
 }
 
 $user = User::find_by_id($_GET['id']);
 
+     
+
 if(isset($_POST['update'])) {
+
 
     if($user) {
 
-        $user->username = $_POST['username'];
-        $user->first_name = $_POST['first_name'];
-        $user->last_name = $_POST['last_name'];
-        $user->password = password_hash($_POST['password'],PASSWORD_DEFAULT);
+     
+        $username = $_POST['username'];
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $password = $_POST['password'];
+
+        $user->username = $username;
+        $user->first_name = $first_name;
+        $user->last_name = $last_name;
+        $user->password = password_hash($password,PASSWORD_DEFAULT);
         $user->user_image;
 
         if(empty($_FILES['user_image'])) {
@@ -90,19 +98,19 @@ if(isset($_POST['delete'])) {
                 
                 <div class="form-group">
                     <label class="username">Username</label>
-                    <input type="text" name="username" class="form-control" value="<?= $user->username; ?>">
+                    <input type="text" name="username" class="form-control" value="<?= empty($username) ? $user->username : $username; ?>">
                 </div>
                 <div class="form-group">
                     <label class="first_name">First Name</label>
-                    <input type="text" name="first_name" class="form-control" value="<?= $user->first_name; ?>">
+                    <input type="text" name="first_name" class="form-control" value="<?= empty($first_name) ? $user->first_name : $first_name; ?>">
                 </div>
                 <div class="form-group">
                     <label class="last_name">Last Name</label>
-                    <input type="text" name="last_name" class="form-control" value="<?= $user->last_name; ?>">
+                    <input type="text" name="last_name" class="form-control" value="<?= empty($last_name) ? $user->last_name : $last_name; ?>">
                 </div>
                 <div class="form-group">
                     <label class="password">Password</label>
-                    <input type="password" name="password" class="form-control" value="<?= $user->password; ?>">
+                    <input type="password" name="password" class="form-control" value="<?= empty($password) ? $user->password : $password; ?>">
                 </div>
                 <div class="form-group text-center">
                     <input type="submit" value="Update" name="update" class="btn btn-primary">

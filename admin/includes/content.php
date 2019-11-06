@@ -1,13 +1,12 @@
   <div class="container-fluid">
-    <h1>
-        Dashboard <small class="text-muted">Welcome</small>
+    <h1 class="text-center font-weight-bold">
+        Dashboard 
     </h1>
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
+        <li class="breadcrumb-item active">
+         Dashboard
         </li>
-        <li class="breadcrumb-item active">Overview</li>
     </ol>
     <div class="row">
         <div class="container">
