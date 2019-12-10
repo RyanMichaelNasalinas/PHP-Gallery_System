@@ -134,9 +134,6 @@ if(isset($_POST['delete'])) {
 <!-- /#wrapper -->
 
 
-
-
-
 <!-- Footer -->
 <?php require "includes/footer.php"; ?>
 <!-- /Footer -->

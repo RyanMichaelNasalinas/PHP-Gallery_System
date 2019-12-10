@@ -6,8 +6,6 @@ window.setTimeout(function() {
 
 
 $(document).ready(function(){
-
-
     var user_href;
     var user_href_splitted;
     var user_id;
@@ -46,7 +44,6 @@ $(document).ready(function(){
            }
        });
     });
-
 
     $("#btn_imgsave").click(function() {
         
